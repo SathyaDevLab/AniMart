@@ -22,7 +22,9 @@ const Home = () => {
     setTrendingProducts(products.filter((item) => item.category === "chair"));
     setBestSalesProducts(products.filter((item) => item.category === "sofa"));
     setMobileProducts(products.filter((item) => item.category === "mobile"));
-    setWirelessProducts(products.filter((item) => item.category === "wireless"));
+    setWirelessProducts(
+      products.filter((item) => item.category === "wireless")
+    );
     setPopularProducts(products.filter((item) => item.category === "watch"));
   }, []);
 
@@ -37,27 +39,26 @@ const Home = () => {
                 <p className="hero__subtitle">Trending product in {year}</p>
                 <h2>Enhance Your Space with Minimalistic & Modern Designs</h2>
                 <p>
-                  Discover a curated selection of high-quality products designed to
-                  elevate your living spaces. Shop now and experience the perfect blend
-                  of style and functionality.
+                  Discover a curated selection of high-quality products designed
+                  to elevate your living spaces. Shop now and experience the
+                  perfect blend of style and functionality.
                 </p>
-                <motion.button
-                  whileTap={{ scale: 1.1 }}
-                  className="shop__btn"
-                >
+                <motion.button whileTap={{ scale: 1.1 }} className="shop__btn">
                   <Link to="shop">SHOP NOW</Link>
                 </motion.button>
               </div>
             </Col>
-            <Col lg="6" md="6">
-              <div className="hero__img">
-                <img src={heroImg} alt="Hero Image" />
+            <Col lg="6" md="6" className="hero__img">
+              <div className="">
+                <img src={heroImg} width={"100%"} alt="Hero Image" />
               </div>
             </Col>
           </Row>
         </Container>
       </section>
-      <Services />
+      <section className="serices">
+        <Services />
+      </section>
       <section className="trending__products my-3">
         <Container>
           <Row>
@@ -81,23 +82,22 @@ const Home = () => {
       <section className="timer__count my-3">
         <Container>
           <Row>
-            <Col lg="6" md="6" className="d-flex align-items-center">
-              <div>
+            <Col lg="6" md="6" className="d-flex align-items-center py-2">
+              <div className="timing">
                 <div className="clock__top-content my-3">
                   <h4 className="text-white fs-6 mb-2">Limited Offers</h4>
                   <h4 className="text-white fs-4 mb-3">Quality Armchair</h4>
                 </div>
-                <Clock />
-                <motion.button
-                  whileTap={{ scale: 1.1 }}
-                  className="buy__btn"
-                >
+                <div>
+                  <Clock />
+                </div>
+                <motion.button whileTap={{ scale: 1.1 }} className="buy__btn">
                   <Link to="/shop">Visit Store</Link>
                 </motion.button>
               </div>
             </Col>
             <Col lg="6" md="6" className="text-end">
-              <img src={counterImg} alt="Counter Image" />
+              <img src={counterImg} width={"100%"} alt="Counter Image" />
             </Col>
           </Row>
         </Container>

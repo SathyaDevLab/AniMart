@@ -29,6 +29,15 @@
   justify-content: center;
 }
 .product__card-bottom span i {
-  font-size: 1.2rem;
   color: #fff;
 }
+
+ .product__name{
+  color: var(--primary-color);
+  font-size: 18px;
+ }
+
+ .product__cate{
+  color: gray;
+ }
+

@@ -13,7 +13,7 @@ const Clock = () => {
   }
   let intervel;
   const countDown = () => {
-    const distination = new Date("Jul 10, 2024").getTime();
+    const distination = new Date("Jan 10, 2025").getTime();
     intervel = setInterval(() => {
       const now = new Date().getTime();
       const difference = distination - now;
@@ -36,7 +36,7 @@ const Clock = () => {
 
   return (
     <>
-      <div className="clock__wrapper d-flex align-items-center gap-3">
+      <div className="clock__wrapper d-flex align-items-center gap-2 gap-md-3 col-md-8 col-xl-6">
         <div className="clock__data d-flex align-items-center gap-3">
           <div className="text-center">
             <h1 className="text-white fs-3 mb-2">{addZero(days)}</h1>

@@ -10,7 +10,7 @@ const Footer = () => {
       <footer className="footer">
         <Container>
           <Row>
-            <Col lg="4">
+            <Col lg="4" className="">
               <div className="logo">
                 <div>
                   <h1 className="text-white">AniMart</h1>
@@ -23,7 +23,7 @@ const Footer = () => {
                 Explore our collection and join a community that loves anime!
               </p>
             </Col>
-            <Col lg="3">
+            <Col lg="3" className="mt-4 mt-lg-0">
               <div className="footer__quick-links">
                 <h4 className="quick__links-title">Top Categories</h4>
                 <ListGroup className="mb-4">
@@ -67,19 +67,19 @@ const Footer = () => {
                 <ListGroup className="mb-4 footer__contact">
                   <ListGroupItem className="ps-0 border-0 d-flex align-items-center gap-2">
                     <span>
-                      <i class="bi bi-geo-alt"></i>
+                      <i className="bi bi-geo-alt"></i>
                     </span>
                     <p>Chennai</p>
                   </ListGroupItem>
                   <ListGroupItem className="ps-0 border-0 d-flex align-items-center gap-2">
                     <span>
-                      <i class="bi bi-telephone-forward"></i>
+                      <i className="bi bi-telephone-forward"></i>
                     </span>
                     <p>+91 8220973147</p>
                   </ListGroupItem>
                   <ListGroupItem className="ps-0 border-0 d-flex align-items-center gap-2">
                     <span>
-                      <i class="bi bi-envelope-at"></i>
+                      <i className="bi bi-envelope-at"></i>
                     </span>
                     <p>shanthisathya1@gmail.com</p>
                   </ListGroupItem>
