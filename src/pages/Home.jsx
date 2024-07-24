@@ -97,7 +97,7 @@ const Home = () => {
               </div>
             </Col>
             <Col lg="6" md="6" className="text-end">
-              <img src={counterImg} width={"100%"} alt="Counter Image" />
+              <img src={counterImg} width={"70%"} alt="Counter Image" />
             </Col>
           </Row>
         </Container>

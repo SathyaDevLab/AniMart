@@ -56,7 +56,6 @@ const Shop = () => {
   return (
     <Helmet title={"Shop"}>
       <CommonSection title={"Products"} />
-
       <section>
         <Container>
           <Row>
@@ -72,7 +71,7 @@ const Shop = () => {
                 </select>
               </div>
             </Col>
-            <Col lg="3" md="3" className="pt-4">
+            <Col lg="3" md="6" className="pt-4  d-md-flex justify-content-end">
               <div className="filter__widget">
                 <select name="" id="">
                   <option>Sort by</option>
@@ -81,7 +80,7 @@ const Shop = () => {
                 </select>
               </div>
             </Col>
-            <Col lg="6" md="6" className="pt-4">
+            <Col lg="6" md="12" className="pt-4">
               <div className="search__box">
                 <input
                   type="text"

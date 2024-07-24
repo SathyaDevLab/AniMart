@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Container, Row, Col } from "reactstrap";
 import { useParams } from "react-router-dom";
 import products from "../assets/data/products";
@@ -7,9 +7,20 @@ import CommonSection from "../components/UI/CommonSection";
 import "../styles/productDetails.css";
 import { motion } from "framer-motion";
 import reviewProfile from "../assets/images/default-profile.jpg";
+import ProductList from "../components/UI/ProductList";
+import { useDispatch } from "react-redux";
+import { cartActions } from "../redux/slices/cartSlice";
+import { toast } from "react-toastify";
 
 const ProductDetails = () => {
   const [tab, setTab] = useState("desc");
+
+  const [starrating, setStarRating] = useState(0);
+
+  const reviewUser = useRef("");
+  const reviewMsg = useRef("");
+
+  const dispatch = useDispatch();
 
   const { id } = useParams();
   const product = products.find((item) => item.id === id);
@@ -25,27 +36,53 @@ const ProductDetails = () => {
     shortDesc,
   } = product;
 
-  const names = ["Alice", "Bob", "Charlie", "David", "Eve"];
+  const relatedProduct = products.filter((item) => item.category === category);
 
-  const displayRandomName = () => {
-    const randomIndex = Math.floor(Math.random() * names.length);
-    return names[randomIndex];
+  const submitHandler = (e) => {
+    e.preventDefault();
+
+    const reviewUserName = reviewUser.current.value;
+    const reviewUserMsg = reviewMsg.current.value;
+
+    const reviewObj = {
+      userName: reviewUserName,
+      text: reviewUserMsg,
+      rating: starrating,
+    };
+
+    toast.success("Review submitted , Keep shopping");
+    reviewUser.current.value = "";
+    reviewMsg.current.value = "";
+    setStarRating(0);
   };
+
+  const addToCard = () => {
+    dispatch(
+      cartActions.addItem({
+        id,
+        image: imgUrl,
+        productName,
+        price,
+      })
+    );
+    toast.success("Product added successfully");
+  };
+
   return (
     <Helmet title={productName}>
       <CommonSection title={productName} />
       <section>
         <Container>
           <Row>
-            <Col col="6" className="text-end">
+            <Col lg="6" className="text-end">
               <img
                 src={imgUrl}
-                height={"500px"}
-                width={"500px"}
+                // height={"500px"}
+                width={"100%"}
                 alt="Product Image"
               />
             </Col>
-            <Col col="6" className="d-flex flex-column justify-content-center">
+            <Col lg="6" className="d-flex flex-column justify-content-center">
               <div className="product__details">
                 <h2>{productName}</h2>
 
@@ -72,12 +109,16 @@ const ProductDetails = () => {
                   </p>
                 </div>
               </div>
-              <span className="product__price">${price}</span>
+              <div className="d-flex align-items-center gap-3">
+                <span className="product__price">${price}</span>
+                <span>Category: {category.toUpperCase()}</span>
+              </div>
               <p>{shortDesc}</p>
               <div>
                 <motion.button
                   whileTap={{ scale: 1.12 }}
                   className="shop__btn mt-4"
+                  onClick={addToCard}
                 >
                   Add to Cart
                 </motion.button>
@@ -124,7 +165,7 @@ const ProductDetails = () => {
                                 borderRadius: "50%",
                               }}
                             />
-                            <h6>{displayRandomName()}</h6>
+                            <h6>Sathya</h6>
                           </div>
                           <div className="ms-5">
                             <span>{item.rating} (rating)</span>
@@ -139,26 +180,100 @@ const ProductDetails = () => {
                     >
                       <h4>Leave your ecperience</h4>
                       <div className="form-container">
-                        <form className="form">
+                        <form className="form" onSubmit={submitHandler}>
                           <div className="form-group">
                             <label htmlFor="email">Name</label>
                             <input
+                              ref={reviewUser}
                               type="text"
                               id="name"
                               name="name"
-                              required=""
+                              required
+                              placeholder="Hi there !"
                             />
+                          </div>
+                          <div className="d-flex gap-2">
+                            <label
+                              htmlFor=""
+                              className="d-flex align-items-center"
+                            >
+                              Give your rating :{" "}
+                            </label>
+                            <div className="d-flex align-items-center gap-2">
+                              <motion.span
+                                whileTap={{ scale: 1.4 }}
+                                className="stars"
+                                onClick={() => setStarRating(1)}
+                              >
+                                <i
+                                  className={`bi bi-star${
+                                    starrating >= 1 ? "-fill" : ""
+                                  }`}
+                                  style={{ fontSize: "14px", color: "coral" }}
+                                ></i>
+                              </motion.span>
+                              <motion.span
+                                className="stars"
+                                whileTap={{ scale: 1.5 }}
+                                onClick={() => setStarRating(2)}
+                              >
+                                <i
+                                  className={`bi bi-star${
+                                    starrating >= 2 ? "-fill" : ""
+                                  }`}
+                                  style={{ fontSize: "16px", color: "coral" }}
+                                ></i>
+                              </motion.span>
+                              <motion.span
+                                className="stars"
+                                whileTap={{ scale: 1.6 }}
+                                onClick={() => setStarRating(3)}
+                              >
+                                <i
+                                  className={`bi bi-star${
+                                    starrating >= 3 ? "-fill" : ""
+                                  }`}
+                                  style={{ fontSize: "18px", color: "coral" }}
+                                ></i>
+                              </motion.span>
+                              <motion.span
+                                className="stars"
+                                whileTap={{ scale: 1.7 }}
+                                onClick={() => setStarRating(4)}
+                              >
+                                <i
+                                  className={`bi bi-star${
+                                    starrating >= 4 ? "-fill" : ""
+                                  }`}
+                                  style={{ fontSize: "20px", color: "coral" }}
+                                ></i>
+                              </motion.span>
+                              <motion.span
+                                className="stars"
+                                whileTap={{ scale: 1.8 }}
+                                onClick={() => setStarRating(5)}
+                              >
+                                <i
+                                  className={`bi bi-star${
+                                    starrating >= 5 ? "-fill" : ""
+                                  }`}
+                                  style={{ fontSize: "22px", color: "coral" }}
+                                ></i>
+                              </motion.span>
+                            </div>
                           </div>
                           <div className="form-group">
                             <label htmlFor="textarea">
                               Leave your experience
                             </label>
                             <textarea
+                              ref={reviewMsg}
                               name="textarea"
                               id="textarea"
                               rows="10"
                               cols="50"
-                              required=""
+                              placeholder="Message here ....."
+                              required
                             ></textarea>
                           </div>
                           <button className="form-submit-btn" type="submit">
@@ -170,6 +285,13 @@ const ProductDetails = () => {
                   </div>
                 </div>
               )}
+            </Col>
+            <Col lg="12" className="mt-4">
+              <h2 className="related__title">You might also like</h2>
+
+              <div className="d-flex flex-wrap my-2 justify-content-around justify-content-md-start">
+                <ProductList data={relatedProduct} />
+              </div>
             </Col>
           </Row>
         </Container>

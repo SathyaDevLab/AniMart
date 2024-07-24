@@ -1,6 +1,4 @@
-.product__item {
-  cursor: pointer;
-}
+
 .product__info h3 a {
   font-size: 1.1rem;
   color: var(--primary-color);
@@ -41,3 +39,6 @@
   color: gray;
  }
 
+.product__img{
+  width: 100%;
+}
