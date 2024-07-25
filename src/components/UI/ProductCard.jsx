@@ -19,7 +19,7 @@ const ProductCard = ({ item }) => {
         id: id,
         productName: productName,
         price: price,
-        image: imgUrl,
+        imgUrl: imgUrl,
       })
     );
     toast.success("Product added successfully");
@@ -50,6 +50,7 @@ const ProductCard = ({ item }) => {
             whileTap={{ scale: 1.2 }}
             className="icon"
             onClick={addToCart}
+            style={{cursor:"pointer"}}
           >
             <i className="bi bi-plus"></i>
           </motion.span>

@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import "./header.css";
-import { NavLink } from "react-router-dom";
+import { NavLink,useNavigate } from "react-router-dom";
 import { Container, Row } from "reactstrap";
 import { motion } from "framer-motion";
 import logo from "../../assets/images/eco-logo.png";
@@ -27,6 +27,8 @@ const Header = () => {
   const headerRef = useRef(null);
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
 
+  const navigate=useNavigate()
+
   const stickHeader = () => {
     window.addEventListener("scroll", () => {
       if (
@@ -45,6 +47,10 @@ const Header = () => {
   });
 
   const menuToggle = () => menuRef.current.classList.toggle("active__menu");
+
+  const navigateToCart=()=>{
+    navigate("/cart")
+  }
 
   return (
     <>
@@ -81,10 +87,10 @@ const Header = () => {
                     <i className="bi bi-heart"></i>
                     <span className="badge">99</span>
                   </span>
-                  <span className="cart__icon">
+                  <motion.span className="cart__icon" whileTap={{scale:1.2}} onClick={navigateToCart} >
                     <i className="bi bi-bag-heart"></i>
                     <span className="badge">{totalQuantity}</span>
-                  </span>
+                  </motion.span>
                   <span className="">
                     <motion.img
                       whileTap={{ scale: 1.2 }}
