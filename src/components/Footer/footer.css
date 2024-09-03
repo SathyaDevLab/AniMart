@@ -1,0 +1,39 @@
+.footer {
+  padding: 40px 0;
+  background: var(--primary-color);
+}
+
+.footer__text {
+  line-height: 35px;
+  color: gainsboro;
+}
+
+.footer__quick-links ul li {
+  background: transparent !important;
+}
+.footer__quick-links ul li a {
+  color: aliceblue;
+}
+.quick__links-title {
+  margin-bottom: 12px;
+  color: #fff;
+  font-style: 1.1rem;
+}
+.footer__contact li span,
+.footer__contact li p {
+  color: aliceblue;
+}
+.footer__contact li span {
+  font-size: 1.2rem;
+}
+
+.footer__contact li p {
+  font-size: 0.9rem;
+}
+
+.footer__copyrights {
+  font-size: 0.9rem;
+  color: aliceblue;
+  margin-top: 20px;
+  text-align: end;
+}
