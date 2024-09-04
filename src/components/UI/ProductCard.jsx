@@ -26,12 +26,20 @@ const ProductCard = ({ item }) => {
   };
 
   return (
-    <Col lg="3" md="4">
-      <div className="product__item">
+    <Col lg="3" md="4" className="p-2">
+      <div
+        className="p-3"
+        style={{
+          borderRadius: "10px",
+          boxShadow:
+            "rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px",
+        }}
+      >
         <Link to={`/shop/${id}`}>
           <div className="product__img">
             <motion.img
               whileHover={{ scale: 0.9 }}
+              
               src={imgUrl}
               alt="Product Image"
               width="100%"
@@ -50,7 +58,7 @@ const ProductCard = ({ item }) => {
             whileTap={{ scale: 1.2 }}
             className="icon"
             onClick={addToCart}
-            style={{cursor:"pointer"}}
+            style={{ cursor: "pointer" }}
           >
             <i className="bi bi-plus"></i>
           </motion.span>

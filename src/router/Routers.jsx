@@ -7,6 +7,7 @@ import Cart from "../pages/Cart";
 import ProductDetails from "../pages/ProductDetails";
 import Shop from "../pages/Shop";
 import Checkout from "../pages/Checkout";
+import ProtectedRoute from "./ProtectedRoute";
 
 const Routers = () => {
   return (
@@ -19,7 +20,10 @@ const Routers = () => {
         <Route path="cart" element={<Cart />} />
         <Route path="shop" element={<Shop />} />
         <Route path="shop/:id" element={<ProductDetails />} />
-        <Route path="checkout" element={<Checkout />} />
+        <Route
+          path="checkout"
+          element={<ProtectedRoute>{<Checkout />}</ProtectedRoute>}
+        />
       </Routes>
     </>
   );

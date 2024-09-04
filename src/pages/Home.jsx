@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Helmet from "../components/Helmet/Helmet";
 import { Container, Row, Col } from "reactstrap";
-import heroImg from "../assets/images/hero-img.png";
+import heroImg from "../assets/images/hero-img.jpg";
 import counterImg from "../assets/images/counter-timer-img.png";
 import Services from "../services/Services";
 import ProductList from "../components/UI/ProductList";
@@ -31,7 +31,7 @@ const Home = () => {
   const year = new Date().getFullYear();
   return (
     <Helmet title="Home">
-      <section className="hero__section py-3">
+      <section className="hero__section">
         <Container>
           <Row>
             <Col lg="6" md="6">
@@ -49,8 +49,8 @@ const Home = () => {
               </div>
             </Col>
             <Col lg="6" md="6" className="hero__img">
-              <div className="">
-                <img src={heroImg} width={"100%"} alt="Hero Image" />
+              <div className=" d-flex justify-content-end">
+                <img src={heroImg} width={"83%"} alt="Hero Image" />
               </div>
             </Col>
           </Row>
