@@ -8,6 +8,9 @@ import ProductDetails from "../pages/ProductDetails";
 import Shop from "../pages/Shop";
 import Checkout from "../pages/Checkout";
 import ProtectedRoute from "./ProtectedRoute";
+import AllProducts from "../admin/AllProducts";
+import AddProducts from "../admin/AddProducts";
+import Dashboard from "../admin/Dashboard";
 
 const Routers = () => {
   return (
@@ -20,10 +23,12 @@ const Routers = () => {
         <Route path="cart" element={<Cart />} />
         <Route path="shop" element={<Shop />} />
         <Route path="shop/:id" element={<ProductDetails />} />
-        <Route
-          path="checkout"
-          element={<ProtectedRoute>{<Checkout />}</ProtectedRoute>}
-        />
+        {/* <Route path="/" element={<ProtectedRoute />}> */}
+          <Route path="checkout" element={<Checkout />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="dashboard/all-products" element={<AllProducts />} />
+          <Route path="dashboard/add-product" element={<AddProducts />} />
+        {/* </Route> */}
       </Routes>
     </>
   );

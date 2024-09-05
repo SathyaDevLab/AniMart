@@ -40,7 +40,7 @@
   animation: shake_541 0.14s 3;
 }
 
-search__box:valid {
+.search__box:valid {
   border-color: #45feaf;
   animation: none;
 }

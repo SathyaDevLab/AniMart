@@ -45,9 +45,9 @@ const Login = () => {
       <section>
         <Container>
           <Row className="my-3">
-            <Col lg="6" className="m-auto text-center">
+            <Col lg="5" className="m-auto text-center">
               <h3 className="fw-bold fs-4 mb-3">Login</h3>
-              <Form className="auth__form" onSubmit={signIn}>
+              <Form className="auth__form d-flex flex-column gap-2" onSubmit={signIn}>
                 <FormGroup className="form__group">
                   <input
                     type="email"
@@ -64,9 +64,11 @@ const Login = () => {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </FormGroup>
-                <button className="buy__btn auth__btn" type="submit">
-                  {loading ? "Logging in..." : "Login"}
-                </button>
+                <div>
+                  <button className="buy__btn auth__btn" type="submit">
+                    {loading ? "Logging in..." : "Login"}
+                  </button>
+                </div>
                 <p className="">
                   Don't have an account?{" "}
                   <Link to={"/signup"}>Create an account</Link>

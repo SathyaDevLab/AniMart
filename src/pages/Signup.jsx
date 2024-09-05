@@ -74,7 +74,9 @@ const Signup = () => {
           photoURL: downloadURL,
         });
         setLoading(false);
-        toast.success("Your account has been successfully created! Welcome aboard!");
+        toast.success(
+          "Your account has been successfully created! Welcome aboard!"
+        );
         resetForm();
         navigate("/login");
       };
@@ -100,7 +102,9 @@ const Signup = () => {
       }
     } catch (error) {
       setLoading(false);
-      toast.error("Oops! Something went wrong. Please check your credentials and try again." );
+      toast.error(
+        "Oops! Something went wrong. Please check your credentials and try again."
+      );
     }
   };
 
@@ -109,9 +113,12 @@ const Signup = () => {
       <section>
         <Container>
           <Row className="my-3">
-            <Col lg="6" className="m-auto text-center">
+            <Col lg="5" className="m-auto text-center">
               <h3 className="fw-bold fs-4 mb-3">SignUp</h3>
-              <Form className="auth__form" onSubmit={signUp}>
+              <Form
+                className="auth__form d-flex flex-column gap-2"
+                onSubmit={signUp}
+              >
                 <FormGroup className="form__group">
                   <input
                     type="text"
@@ -142,11 +149,13 @@ const Signup = () => {
                     onChange={(e) => setFile(e.target.files[0])}
                   />
                 </FormGroup>
-                <button className="buy__btn auth__btn" type="submit">
-                  {loading ? "Creating..." : "Create an Account"}
-                </button>
+                <div>
+                  <button className="buy__btn auth__btn" type="submit">
+                    {loading ? "Creating..." : "Create an Account"}
+                  </button>
+                </div>
                 <p className="">
-                  Already have an account? <Link to={"/login"}>Login</Link>
+                  Already have an account? <Link to={"/login"} className="fw-bold">Login</Link>
                 </p>
               </Form>
             </Col>

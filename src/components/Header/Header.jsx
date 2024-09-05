@@ -110,7 +110,7 @@ const Header = () => {
                 <div className="nav__icons ">
                   <span className="fav__icon">
                     <i className="bi bi-heart"></i>
-                    <span className="badge">99</span>
+                    <span className="badge">0</span>
                   </span>
                   <motion.span
                     className="cart__icon"
@@ -127,22 +127,25 @@ const Header = () => {
                       alt="User Icon"
                       onClick={toggleProfileActions}
                     />
-                    <div className="profile__actions" ref={profileActionsRef}>
+                    <div className="profile__actions p-1" ref={profileActionsRef}>
                       {currentUser ? (
                         <div
-                          className="text-center p-3 w-100 profile-hover"
+                          className="text-center p-2 w-100 profile-hover"
                           onClick={logout}
                         >
                           Logout
                         </div>
                       ) : (
-                        <div className="d-flex flex-column">
-                          <Link className="p-3 profile-hover" to="/signup">
-                            SignUp
-                          </Link>
-                          <Link className="p-3 profile-hover" to="/login">
-                            Login
-                          </Link>
+                        <div className="d-flex flex-column  w-100">
+                          <div className="p-2 profile-hover w-100 d-flex align-items-center justify-content-center">
+                            <Link to="/signup">SignUp</Link>
+                          </div>
+                          <div className="p-2 profile-hover w-100 d-flex align-items-center justify-content-center">
+                            <Link to="/login">Login</Link>
+                          </div>
+                          <div className="p-2 profile-hover w-100 d-flex align-items-center justify-content-center">
+                            <Link to="/dashboard">Dashboard</Link>
+                          </div>
                         </div>
                       )}
                     </div>

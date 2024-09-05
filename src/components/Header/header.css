@@ -32,7 +32,7 @@
   cursor: pointer;
 }
 
-.nav-hover{
+.nav-hover {
   width: fit-content;
   height: 50px;
   padding: 10px;
@@ -41,25 +41,35 @@
   border-radius: 10px;
 }
 
-.nav-hover:hover{
+.nav-hover:hover {
   background-color: #eff6ff;
 }
 
 .nav__icons {
   display: flex;
   align-items: center;
-  column-gap: 1.2rem;
+  column-gap: .5rem;
 }
 
 .fav__icon,
 .cart__icon {
   position: relative;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.fav__icon:hover,
+.cart__icon:hover {
+  border-radius: 50%;
+  background-color: #eff6ff;
 }
 
 .badge {
   position: absolute;
-  top: 26%;
-  right: -35%;
+  top: 5%;
+  right: 5%;
   content: "";
   background: var(--primary-color);
   color: #fff;
@@ -97,6 +107,9 @@
   z-index: 9;
 }
 
+.nav__icons .profile .profile__actions a {
+  color: var(--primary-color);
+}
 .nav__icons .profile .profile__actions {
   position: absolute;
   top: 103%;
@@ -106,12 +119,14 @@
   display: none;
   align-items: center;
   flex-direction: column;
-  background-color: var(--card-bg-01);
+  background-color: #fff;
   border-radius: 10px;
   line-height: 30px;
   cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  font-weight: 600;
 }
-.profile-hover:hover{
+.profile-hover:hover {
   border-radius: 10px;
   background-color: #eff6ff;
 }
