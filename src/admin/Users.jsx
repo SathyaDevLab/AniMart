@@ -1,17 +1,16 @@
-import { motion } from "framer-motion";
 import React from "react";
 import { Col, Container, Row } from "reactstrap";
 import useGetData from "../custom-hooks/useGetData";
+import { motion } from "framer-motion";
 import { db } from "../firebaseConfig";
 import { doc, deleteDoc } from "firebase/firestore";
 import { toast } from "react-toastify";
 import Loader from "../components/component/Loader";
 
-const AllProducts = () => {
-  const { data: productData, loading } = useGetData("products");
-
-  const deleteProduct = async (id) => {
-    await deleteDoc(doc(db, "products", id));
+const Users = () => {
+  const { data: userData, loading } = useGetData("users");
+  const deleteUser = async (id) => {
+    await deleteDoc(doc(db, "users", id));
     toast.success("Deleted!");
   };
 
@@ -19,15 +18,14 @@ const AllProducts = () => {
     <section>
       <Container>
         <Row className="my-3">
-          <Col lg="12">
-          <div className=" table-responsive">
-          <table className=" table">
+          <Col lg="12" className="">
+           <div className=" table-responsive">
+           <table className="table">
               <thead>
                 <tr className=" text-center text-nowrap">
                   <th>Image</th>
-                  <th>Title</th>
-                  <th>Category</th>
-                  <th>Price</th>
+                  <th>User Name</th>
+                  <th>Email</th>
                   <th>Action</th>
                 </tr>
               </thead>
@@ -39,15 +37,14 @@ const AllProducts = () => {
                       <h4 className=" justify-content-center">Loading...</h4>
                     </td>
                   </tr>
-                ) : productData.length > 0 ? (
-                  productData.map((product) => (
-                    <tr className="text-center align-middle" key={product.id}>
+                ) : userData.length > 0 ? (
+                  userData.map((user) => (
+                    <tr className="text-center align-middle" key={user.id}>
                       <td>
-                        <img src={product.imgUrl} alt="" />
+                        <img src={user.photoURL} alt="" />
                       </td>
-                      <td>{product.title}</td>
-                      <td>{product.category}</td>
-                      <td>{product.price}</td>
+                      <td>{user.displayName}</td>
+                      <td>{user.email}</td>
                       <td>
                         <motion.span
                           whileTap={{ scale: 1.5 }}
@@ -56,7 +53,7 @@ const AllProducts = () => {
                             fontSize: "25px",
                             color: "red",
                           }}
-                          onClick={() => deleteProduct(product.id)}
+                          onClick={() => deleteUser(user.id)}
                         >
                           <i className="bi bi-trash3"></i>
                         </motion.span>
@@ -65,12 +62,12 @@ const AllProducts = () => {
                   ))
                 ) : (
                   <tr className=" text-center align-middle">
-                    <td colSpan={5}>No items are added</td>
+                    <td colSpan={5}>No users are added</td>
                   </tr>
                 )}
               </tbody>
             </table>
-          </div>
+           </div>
           </Col>
         </Row>
       </Container>
@@ -79,4 +76,4 @@ const AllProducts = () => {
   );
 };
 
-export default AllProducts;
+export default Users;

@@ -57,7 +57,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  column-gap: 2.7rem;
+  column-gap: 2rem;
 }
 
 .admin__menu-list .admin__menu-item a {
@@ -78,13 +78,12 @@
   width: 100%;
   border: none;
   outline: none;
-background: transparent;  
+  background: transparent;
 }
 
-.search__box span  {
+.search__box span {
   color: var(--primary-color);
 }
-
 
 .search__box {
   width: 100%;
@@ -103,4 +102,67 @@ background: transparent;
 .search__box:valid {
   border-color: #45feaf;
   animation: none;
+}
+
+.profile img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.profile {
+  position: relative;
+  z-index: 9;
+}
+
+.profile .profile__actions a {
+  color: var(--primary-color);
+}
+.profile .profile__actions {
+  position: absolute;
+  top: 170%;
+  right: 0;
+  width: 150px;
+  z-index: 10;
+  display: none;
+  align-items: center;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 10px;
+  line-height: 30px;
+  cursor: pointer;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  font-weight: 600;
+}
+.profile-hover:hover {
+  border-radius: 10px;
+  background-color: #eff6ff;
+}
+.show__profileActions {
+  display: flex !important;
+}
+
+@media all and (max-width: 560px) {
+  .admin__nav-top-rigth {
+    column-gap: 10px;
+  }
+  .admin__menu-list {
+    column-gap: 10px;
+  }
+}
+
+@media all and (max-width: 490px) {
+  .admin__menu {
+    height: auto;
+  }
+  .admin__menu-list {
+    flex-direction: column;
+  }
+}
+
+@media all and (max-width: 430px) {
+  .search__box {
+    display: none !important;
+  }
 }

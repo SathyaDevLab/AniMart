@@ -8,6 +8,7 @@ import { setDoc, doc } from "firebase/firestore";
 import { auth, storage, db } from "../firebaseConfig";
 import { toast } from "react-toastify";
 import "../styles/login.css";
+import Loader from "../components/component/Loader";
 
 const Signup = () => {
   const [username, setUsername] = useState("");
@@ -155,12 +156,16 @@ const Signup = () => {
                   </button>
                 </div>
                 <p className="">
-                  Already have an account? <Link to={"/login"} className="fw-bold">Login</Link>
+                  Already have an account?{" "}
+                  <Link to={"/login"} className="fw-bold">
+                    Login
+                  </Link>
                 </p>
               </Form>
             </Col>
           </Row>
         </Container>
+        {loading && <Loader />}
       </section>
     </Helmet>
   );

@@ -4,12 +4,14 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import Helmet from "../components/Helmet/Helmet";
 import { Container, Row, Col } from "reactstrap";
-import heroImg from "../assets/images/hero-img.jpg";
+import heroImg from "../assets/images/hero-img.png";
 import counterImg from "../assets/images/counter-timer-img.png";
 import Services from "../services/Services";
 import ProductList from "../components/UI/ProductList";
 import Clock from "../components/UI/Clock";
 import products from "../assets/data/products";
+import useGetData from "../custom-hooks/useGetData";
+import Loader from "../components/component/Loader";
 
 const Home = () => {
   const [trendProducts, setTrendingProducts] = useState([]);
@@ -18,15 +20,22 @@ const Home = () => {
   const [wirelessProducts, setWirelessProducts] = useState([]);
   const [popularProducts, setPopularProducts] = useState([]);
 
+  const { data: product, loading } = useGetData("products");
+
   useEffect(() => {
-    setTrendingProducts(products.filter((item) => item.category === "chair"));
-    setBestSalesProducts(products.filter((item) => item.category === "sofa"));
-    setMobileProducts(products.filter((item) => item.category === "mobile"));
-    setWirelessProducts(
-      products.filter((item) => item.category === "wireless")
+    const productData = [...products, ...product];
+    setTrendingProducts(
+      productData.filter((item) => item.category === "chair")
     );
-    setPopularProducts(products.filter((item) => item.category === "watch"));
-  }, []);
+    setBestSalesProducts(
+      productData.filter((item) => item.category === "sofa")
+    );
+    setMobileProducts(productData.filter((item) => item.category === "mobile"));
+    setWirelessProducts(
+      productData.filter((item) => item.category === "wireless")
+    );
+    setPopularProducts(productData.filter((item) => item.category === "watch"));
+  }, [products, product]);
 
   const year = new Date().getFullYear();
   return (
@@ -36,21 +45,21 @@ const Home = () => {
           <Row>
             <Col lg="6" md="6">
               <div className="hero__content">
-                <p className="hero__subtitle">Trending product in {year}</p>
-                <h2>Enhance Your Space with Minimalistic & Modern Designs</h2>
+                <p className="hero__subtitle">Hot Picks for {year}</p>
+                <h2>{`Transform Your Home with Sleek & Stylish Décor`}</h2>
                 <p>
-                  Discover a curated selection of high-quality products designed
-                  to elevate your living spaces. Shop now and experience the
-                  perfect blend of style and functionality.
+                  {
+                    "  Explore an exclusive range of premium products that bring both elegance and comfort to your home. Don’t miss out on the  ultimate fusion of aesthetics and practicality."
+                  }
                 </p>
                 <motion.button whileTap={{ scale: 1.1 }} className="shop__btn">
-                  <Link to="shop">SHOP NOW</Link>
+                  <Link to="shop">START SHOPPING</Link>
                 </motion.button>
               </div>
             </Col>
-            <Col lg="6" md="6" className="hero__img">
+            <Col lg="6" md="6" className="hero__img justify-content-end">
               <div className=" d-flex justify-content-end">
-                <img src={heroImg} width={"83%"} alt="Hero Image" />
+                <img src={heroImg} width={"100%"} alt="Hero Image" />
               </div>
             </Col>
           </Row>
@@ -65,7 +74,11 @@ const Home = () => {
             <Col lg="12" className="text-center">
               <h2 className="section__title my-4">Trending Products</h2>
             </Col>
-            <ProductList data={trendProducts} />
+            {loading ? (
+              <h5 className=" fw-bold">Loading</h5>
+            ) : (
+              <ProductList data={trendProducts} />
+            )}
           </Row>
         </Container>
       </section>
@@ -75,7 +88,11 @@ const Home = () => {
             <Col lg="12" className="text-center">
               <h2 className="section__title my-4">Best Sales</h2>
             </Col>
-            <ProductList data={bestSalesProducts} />
+            {loading ? (
+              <h5 className=" fw-bold">Loading</h5>
+            ) : (
+              <ProductList data={bestSalesProducts} />
+            )}
           </Row>
         </Container>
       </section>
@@ -108,8 +125,15 @@ const Home = () => {
             <Col lg="12" className="text-center my-3">
               <h2 className="section__title my-4">New Arrivals</h2>
             </Col>
-            <ProductList data={mobileProducts} />
-            <ProductList data={wirelessProducts} />
+
+            {loading ? (
+              <h5 className=" fw-bold">Loading</h5>
+            ) : (
+              <>
+                <ProductList data={mobileProducts} />
+                <ProductList data={wirelessProducts} />
+              </>
+            )}
           </Row>
         </Container>
       </section>
@@ -119,9 +143,17 @@ const Home = () => {
             <Col lg="12" className="text-center my-3">
               <h2 className="section__title my-4">Popular Categories</h2>
             </Col>
-            <ProductList data={popularProducts} />
+
+            {loading ? (
+              <h5 className=" fw-bold">Loading</h5>
+            ) : (
+              <>
+                <ProductList data={popularProducts} />
+              </>
+            )}
           </Row>
         </Container>
+        {loading && <Loader />}
       </section>
     </Helmet>
   );

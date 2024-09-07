@@ -6,6 +6,7 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../firebaseConfig";
 import { toast } from "react-toastify";
 import "../styles/login.css";
+import Loader from "../components/component/Loader";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -77,6 +78,7 @@ const Login = () => {
             </Col>
           </Row>
         </Container>
+        {loading && <Loader /> }
       </section>
     </Helmet>
   );

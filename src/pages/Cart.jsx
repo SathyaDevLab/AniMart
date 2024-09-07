@@ -1,13 +1,12 @@
+import { motion } from "framer-motion";
 import React from "react";
-import "../styles/cart.css";
+import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+import { Col, Container, Row } from "reactstrap";
 import Helmet from "../components/Helmet/Helmet";
 import CommonSection from "../components/UI/CommonSection";
-import { Col, Container, Row } from "reactstrap";
-import tdImg from "../assets/images/arm-chair-01.jpg";
-import { motion } from "framer-motion";
 import { cartActions } from "../redux/slices/cartSlice";
-import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import "../styles/cart.css";
 
 const Cart = () => {
   const cartItems = useSelector((state) => state.cart.cartItems);

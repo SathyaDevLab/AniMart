@@ -1,39 +1,45 @@
 .footer {
-  padding: 40px 0;
-  background: var(--primary-color);
+  padding: 30px 0;
+  background-color: var(--primary-color);
 }
 
 .footer__text {
-  line-height: 35px;
-  color: gainsboro;
+  line-height: 30px;
+  color: #dcdcdc; 
 }
 
-.footer__quick-links ul li {
+.list-group-item {
   background: transparent !important;
 }
-.footer__quick-links ul li a {
-  color: aliceblue;
+.list-group-item a {
+  color: #f0f8ff;
 }
+.list-group-item i {
+  color: #f0f8ff;
+}
+
 .quick__links-title {
-  margin-bottom: 12px;
-  color: #fff;
-  font-style: 1.1rem;
+  margin-bottom: 15px;
+  color: whitesmoke;
+  font-size: 1.1rem;
 }
-.footer__contact li span,
-.footer__contact li p {
-  color: aliceblue;
+
+.list-group-item span,
+.list-group-item p {
+  color: #f0f8ff; 
 }
-.footer__contact li span {
+
+ .list-group-item span {
   font-size: 1.2rem;
 }
 
-.footer__contact li p {
-  font-size: 0.9rem;
+.list-group-item p {
+  font-size: 1rem; 
 }
 
 .footer__copyrights {
-  font-size: 0.9rem;
-  color: aliceblue;
-  margin-top: 20px;
-  text-align: end;
+  font-size: 0.85rem;
+  color: #f0f8ff;
+  margin-top: 25px;
+  text-align: right;
 }

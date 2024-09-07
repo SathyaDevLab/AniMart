@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Container, Row, Col } from "reactstrap";
 import { useParams } from "react-router-dom";
 import products from "../assets/data/products";
@@ -11,10 +11,13 @@ import ProductList from "../components/UI/ProductList";
 import { useDispatch } from "react-redux";
 import { cartActions } from "../redux/slices/cartSlice";
 import { toast } from "react-toastify";
+import { db } from "../firebaseConfig";
+import { doc, getDoc } from "firebase/firestore";
+import useGetData from "../custom-hooks/useGetData";
 
 const ProductDetails = () => {
   const [tab, setTab] = useState("desc");
-
+  const [addProduct, setAddProduct] = useState({});
   const [starrating, setStarRating] = useState(0);
 
   const reviewUser = useRef("");
@@ -24,6 +27,17 @@ const ProductDetails = () => {
 
   const { id } = useParams();
   const product = products.find((item) => item.id === id);
+
+  useEffect(() => {
+    const getProduct = async () => {
+      const docSnap = await getDoc(docRef);
+      if (docSnap.exists()) {
+        setAddProduct(docSnap.data());
+      } else {
+        toast.warning("no products");
+      }
+    };
+  }, []);
 
   const {
     imgUrl,

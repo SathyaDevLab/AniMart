@@ -108,10 +108,10 @@ const Header = () => {
                   </ul>
                 </div>
                 <div className="nav__icons ">
-                  <span className="fav__icon">
+                  {/* <span className="fav__icon">
                     <i className="bi bi-heart"></i>
                     <span className="badge">0</span>
-                  </span>
+                  </span> */}
                   <motion.span
                     className="cart__icon"
                     whileTap={{ scale: 1.2 }}

@@ -26,7 +26,7 @@ const ProductCard = ({ item }) => {
   };
 
   return (
-    <Col lg="3" md="4" className="p-2">
+    <Col lg="3" md="4" className="p-2 my-2">
       <div
         className="p-3"
         style={{
@@ -43,7 +43,6 @@ const ProductCard = ({ item }) => {
               src={imgUrl}
               alt="Product Image"
               width="100%"
-              height="250px"
               style={{ objectFit: "cover" }}
             />
           </div>
