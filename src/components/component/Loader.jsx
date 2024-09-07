@@ -1,6 +1,13 @@
 import React, { useEffect } from "react";
 
 const Loader = () => {
+    useEffect(() => {
+        document.body.style.overflow = "hidden";
+        
+        return () => {
+          document.body.style.overflow = "auto";
+        };
+      }, []);
   return (
     <>
       <div
@@ -12,8 +19,8 @@ const Loader = () => {
           top: 0,
           left: 0,
           backdropFilter: "blur(10px)",
-          backgroundColor: "rgba(255, 255, 255, 0.3)",
-          pointerEvents: "none",
+          backgroundColor: "rgba(255, 255, 255, 0.3)", 
+          pointerEvents: "none", 
           zIndex: 9999,
         }}
       >
